@@ -21,11 +21,15 @@ public:
     ~SimplePhotoTransfer();
 
 private slots:
+    void moveSelectedImages();
     void onImageSelectionChanged();
     void setupUIBasedOnPathAccessibility();
 
 private:
+    QDir createDestinationDir();
+    void finaliseUI();
     void loadImagesIntoListWidget(QDir);
+    bool moveFileToFolder(const QString& sourceFilePath, const QDir targetFolderPath);
 
     Ui::SimplePhotoTransfer *ui;
     ConfigReader configReader;
