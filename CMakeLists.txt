@@ -11,6 +11,8 @@ qt_add_executable(SimplePhotoTransfer
     src/SimplePhotoTransfer.cpp
     src/SimplePhotoTransfer.h
     src/SimplePhotoTransfer.ui
+    src/ConfigReader.cpp
+    src/ConfigReader.h
 )
 
 qt_add_translations(

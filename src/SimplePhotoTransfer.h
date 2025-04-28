@@ -1,6 +1,8 @@
 #ifndef SIMPLEPHOTOTRANSFER_H
 #define SIMPLEPHOTOTRANSFER_H
 
+#include "ConfigReader.h"
+
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -17,7 +19,11 @@ public:
     SimplePhotoTransfer(QWidget *parent = nullptr);
     ~SimplePhotoTransfer();
 
+private slots:
+    void setupUIBasedOnPathAccessibility();
+
 private:
     Ui::SimplePhotoTransfer *ui;
+    ConfigReader configReader;
 };
 #endif // SIMPLEPHOTOTRANSFER_H
