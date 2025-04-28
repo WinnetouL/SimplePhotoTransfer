@@ -21,6 +21,7 @@ public:
     ~SimplePhotoTransfer();
 
 private slots:
+    void onImageSelectionChanged();
     void setupUIBasedOnPathAccessibility();
 
 private:
@@ -28,5 +29,6 @@ private:
 
     Ui::SimplePhotoTransfer *ui;
     ConfigReader configReader;
+    QStringList selectedImagePaths;
 };
 #endif // SIMPLEPHOTOTRANSFER_H

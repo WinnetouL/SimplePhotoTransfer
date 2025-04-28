@@ -12,6 +12,7 @@ SimplePhotoTransfer::SimplePhotoTransfer(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->retryButton, &QPushButton::clicked, this, &SimplePhotoTransfer::setupUIBasedOnPathAccessibility);
+    connect(ui->imageList, &QListWidget::itemSelectionChanged, this, &SimplePhotoTransfer::onImageSelectionChanged);
 
     setupUIBasedOnPathAccessibility();
 }
@@ -55,5 +56,17 @@ void SimplePhotoTransfer::loadImagesIntoListWidget(QDir dirPath)
         QListWidgetItem *item = new QListWidgetItem(icon, imageFile);
         item->setData(Qt::UserRole, imagePath);
         ui->imageList->addItem(item);
+    }
+}
+
+void SimplePhotoTransfer::onImageSelectionChanged()
+{
+    selectedImagePaths.clear();
+    QList<QListWidgetItem*> selectedItems = ui->imageList->selectedItems();
+    for (int i = 0; i < selectedItems.size(); ++i) {
+        const QListWidgetItem* item = selectedItems[i];
+        QString imagePath = item->data(Qt::UserRole).toString();
+        selectedImagePaths.append(imagePath);
+        qDebug() << "Selected image:" << imagePath;  // TODO remove
     }
 }
