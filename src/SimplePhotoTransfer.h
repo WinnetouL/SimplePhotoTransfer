@@ -3,6 +3,7 @@
 
 #include "ConfigReader.h"
 
+#include <QDir>
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,6 +24,8 @@ private slots:
     void setupUIBasedOnPathAccessibility();
 
 private:
+    void loadImagesIntoListWidget(QDir);
+
     Ui::SimplePhotoTransfer *ui;
     ConfigReader configReader;
 };
