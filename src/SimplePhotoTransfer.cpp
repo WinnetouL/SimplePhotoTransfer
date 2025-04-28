@@ -49,12 +49,11 @@ void SimplePhotoTransfer::setupUIBasedOnPathAccessibility()
 
 void SimplePhotoTransfer::loadImagesIntoListWidget(QDir dirPath)
 {
-    QStringList imageFiles = dirPath.entryList(QStringList() << "*.png" << "*.jpg", QDir::Files);
-
     ui->imageList->clear();
 
-    for (int i = 0; i < imageFiles.size(); ++i) {
-        const QString &imageFile = imageFiles[i];
+    QStringList filesToDisplay = getFilesToDisplay(dirPath);
+    for (int i = 0; i < filesToDisplay.size(); ++i) {
+        const QString &imageFile = filesToDisplay[i];
         QString imagePath = dirPath.filePath(imageFile);
         QPixmap pixmap(imagePath);
         QIcon icon(pixmap);
@@ -62,6 +61,30 @@ void SimplePhotoTransfer::loadImagesIntoListWidget(QDir dirPath)
         item->setData(Qt::UserRole, imagePath);
         ui->imageList->addItem(item);
     }
+}
+
+QStringList SimplePhotoTransfer::getFilesToDisplay(QDir dirPath) {
+    QStringList imageFiles = dirPath.entryList(QStringList() << "*.png" << "*.jpg", QDir::Files);
+    QStringList filesToDisplay;
+    QList<QFileInfo> fileInfoList;
+
+    for (int i = 0; i < imageFiles.size(); ++i) {
+        QFileInfo fileInfo(dirPath.filePath(imageFiles[i]));
+        fileInfoList.append(fileInfo);
+    }
+
+    std::sort(fileInfoList.begin(), fileInfoList.end(), [](const QFileInfo& a, const QFileInfo& b) {
+        return a.lastModified() > b.lastModified();
+    });
+
+    int maxFiles = 3;
+    int filesToLoad = qMin(fileInfoList.size(), maxFiles);
+    for (int i = 0; i < filesToLoad; ++i) {
+        const QFileInfo& fileInfo = fileInfoList[i];
+        filesToDisplay.append(fileInfo.absoluteFilePath());
+    }
+
+    return filesToDisplay;
 }
 
 void SimplePhotoTransfer::onImageSelectionChanged()

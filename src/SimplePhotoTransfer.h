@@ -27,6 +27,7 @@ private slots:
 
 private:
     QDir createDestinationDir();
+    QStringList getFilesToDisplay(QDir dirPath);
     void finaliseUI();
     void loadImagesIntoListWidget(QDir);
     bool moveFileToFolder(const QString& sourceFilePath, const QDir targetFolderPath);
