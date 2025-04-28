@@ -46,7 +46,7 @@ QMap<QString, QString> ConfigReader::readConfig()
         QString error = "Der Ordner für die Übertragung der Bilder\n"
                         "konnte nicht gefunden werden.\n\n"
                         "Ist das Handy angeschlossen?\n"
-                        "Hast du die Erlaubnis zum übertragen der Bilder erteilt?";
+                        "Hast du die Erlaubnis zum Übertragen der Bilder erteilt?";
         return QMap<QString, QString>({{"error", error}});
     } else {
         configMap["search_directory"] = searchDir.absolutePath();

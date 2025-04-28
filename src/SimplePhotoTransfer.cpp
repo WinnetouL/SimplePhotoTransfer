@@ -124,7 +124,7 @@ void SimplePhotoTransfer::moveSelectedImages()
     ui->statusLabel->setText("Bilder wurden erfolgreich verschoben.\n"
                              "Sie befinden sich im folgenden Ordner im Downloads-Verzeichnis:\n" +
                              destinationPath.dirName() +
-                             "\n\nProgramm kann geschlossen werden."
+                             "\n\nDas Programm kann geschlossen werden."
                             );
 }
 
