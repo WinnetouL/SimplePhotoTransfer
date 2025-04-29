@@ -59,6 +59,7 @@ void SimplePhotoTransfer::loadImagesIntoListWidget(QDir dirPath)
         QIcon icon(pixmap);
         QListWidgetItem *item = new QListWidgetItem(icon, imageFile);
         item->setData(Qt::UserRole, imagePath);
+        item->setSizeHint(QSize(350, 310));
         ui->imageList->addItem(item);
     }
 }
