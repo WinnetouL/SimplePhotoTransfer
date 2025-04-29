@@ -3,7 +3,6 @@
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
-#include <QDebug>
 
 QMap<QString, QString> ConfigReader::readConfig()
 {

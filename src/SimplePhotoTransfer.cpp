@@ -31,12 +31,10 @@ void SimplePhotoTransfer::setupUIBasedOnPathAccessibility()
     QMap<QString, QString> config = configReader.readConfig();
 
     if (config.contains("error")) {
-        qWarning() << config.value("error");  // TODO remove
         ui->statusLabel->setText(config.value("error"));
         return;
     }
 
-    qDebug() << "Search Directory:" << config["search_directory"];  // TODO remove
     ui->horizontalLayout->removeWidget(ui->retryButton);
     delete ui->retryButton;
     ui->retryButton = nullptr;
@@ -96,7 +94,6 @@ void SimplePhotoTransfer::onImageSelectionChanged()
         const QListWidgetItem* item = selectedItems[i];
         QString imagePath = item->data(Qt::UserRole).toString();
         selectedImagePaths.append(imagePath);
-        qDebug() << "Selected image:" << imagePath;  // TODO remove
     }
 }
 
@@ -111,7 +108,6 @@ void SimplePhotoTransfer::moveSelectedImages()
 
     QDir destinationPath = createDestinationDir();
 
-    qDebug() << "Selected image:" << destinationPath.absolutePath();  // TODO remove
     for (int i = 0; i < selectedImagePaths.size(); ++i) {
         bool success = moveFileToFolder(selectedImagePaths[i], destinationPath);
         if (!success) {
