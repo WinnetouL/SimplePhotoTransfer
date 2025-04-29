@@ -115,7 +115,7 @@ void SimplePhotoTransfer::moveSelectedImages()
     for (int i = 0; i < selectedImagePaths.size(); ++i) {
         bool success = moveFileToFolder(selectedImagePaths[i], destinationPath);
         if (!success) {
-            ui->statusLabel->setText("Bilder Transfer ist fehlgeschlagen.");
+            ui->statusLabel->setText("Bildübertragung ist fehlgeschlagen.");
             finaliseUI();
             return;
         }

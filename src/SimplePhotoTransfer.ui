@@ -98,7 +98,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Retry</string>
+          <string>Erneut versuchen</string>
          </property>
         </widget>
        </item>

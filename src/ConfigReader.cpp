@@ -13,12 +13,12 @@ QMap<QString, QString> ConfigReader::readConfig()
     QFileInfo configFileInfo(configFile);
 
     if (!configFileInfo.exists() || !configFileInfo.isReadable()) {
-        QString error = "Cannot open config file: ./" + configFile.fileName();
+        QString error = "Konfigurationsdatei existiert nicht: ./" + configFile.fileName();
         return QMap<QString, QString>({{"error", error}});
     }
 
     if (!configFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QString error = "Failed to open config file: ./" + configFile.fileName();
+        QString error = "Öffnen der Konfigurationsdatei ist fehlgeschlagen: ./" + configFile.fileName();
         return QMap<QString, QString>({{"error", error}});
     }
 
@@ -36,7 +36,7 @@ QMap<QString, QString> ConfigReader::readConfig()
     }
 
     if (!configMap.contains("search_directory")) {
-        QString error = "Configuration file misconfigured.";
+        QString error = "Fehler in der Konfiguration.";
         return QMap<QString, QString>({{"error", error}});
     }
 
