@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 project(SimplePhotoTransfer LANGUAGES CXX)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets LinguistTools)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
 
@@ -13,11 +13,6 @@ qt_add_executable(SimplePhotoTransfer
     src/SimplePhotoTransfer.ui
     src/ConfigReader.cpp
     src/ConfigReader.h
-)
-
-qt_add_translations(
-    TARGETS SimplePhotoTransfer
-    TS_FILES src/SimplePhotoTransfer_de_DE.ts
 )
 
 target_link_libraries(SimplePhotoTransfer
