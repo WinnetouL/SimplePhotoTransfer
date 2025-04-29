@@ -15,6 +15,10 @@ qt_add_executable(SimplePhotoTransfer
     src/ConfigReader.h
 )
 
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(SimplePhotoTransfer PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
 target_link_libraries(SimplePhotoTransfer
     PRIVATE
         Qt::Core
